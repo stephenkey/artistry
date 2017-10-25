@@ -1,22 +1,3 @@
-Genre
-- name
-- albums_count
+# Artistry
 
-Artist
-- name
-- albums_count
-
-Album
-+ genre
-+ artist
-- title
-- year
-- artwork
-- seconds
-- tracks_count
-
-Track
-+ album
-- title
-- order
-- seconds
+[![Build Status](https://travis-ci.org/stephenkey/artistry.svg?branch=master)](https://travis-ci.org/stephenkey/artistry)
