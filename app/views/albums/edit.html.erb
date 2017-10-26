@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-sm-12 col-md-8 offset-md-2 col-lg-4 offset-lg-4 py-5">
+
+    <h3><%= @library.album.name %></h3>
+    <p>
+      Edit <%= @library.album.name %>'s condition.
+    </p>
+    <%= form_for(@library, url: album_path(@library)) do |f| %>
+
+      <div class="form-group">
+        <label class="sr-only">Name</label>
+        <%= f.select(:state, Library.aasm.states_for_select, {}, { class: 'form-control' }) %>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Update</button>
+
+    <% end %>
+
+    <hr>
+
+    <a class="btn btn-outline-danger" rel="nofollow" data-method="delete" href="<%= album_path(@library) %>">Remove Album</a>
+
+  </div>
+</div>

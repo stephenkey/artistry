@@ -1,0 +1,47 @@
+<div class="row my-5">
+
+  <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
+    <div class="card album">
+      <img class="card-img-top" src="<%= @library.album.images.last.url %>" alt="<%= @library.album.name %>">
+    </div>
+  </div>
+
+  <div class="col-sm-12 col-md-6 col-lg-9 mb-3">
+    <h1>
+      <%= @library.album.name %>
+    </h1>
+    <p>
+      <%= @library.album.artist.name %> <br>
+      <%= @library.album.published %> <br>
+      <span class="badge badge-secondary"><%= @library.state.humanize %></span>
+      <% @library.album.published.to_time.strftime("%Y") %>
+    </p>
+    <%= link_to 'Edit', edit_album_path(@library), class: 'btn btn-sm btn-outline-dark' %>
+    <%= link_to 'View on last.fm', @library.album.last_fm_url, class: 'btn btn-sm btn-outline-dark', target: '_blank' %>
+  </div>
+</div>
+
+<div class="row mb-5">
+  <div class="col">
+
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Duration</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @library.album.tracks.each do |track| %>
+          <tr>
+            <td><%= track.order %></td>
+            <td><%= link_to track.name, track.last_fm_url, class: 'btn btn-sm btn-link', target: '_blank' %></td>
+            <td><%= Time.at(track.seconds).utc.strftime("%M:%S") %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<% if @albums %>
+  <% @albums.each do |a| %>
+    <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
+      <a href="/albums?album=<%= URI.encode(a['name'], /\W/) %>&artist=<%= URI.encode(a['artist'], /\W/) %>" class="card album" data-remote="true" data-method="post">
+        <img class="card-img-top" src="<%= cover_art a['image'] %>" alt="<%= a['name'] %>">
+        <div class="card-body">
+          <h4 class="card-title"><%= a['name'] %></h4>
+          <p class="card-text"><%= a['artist'] %></p>
+        </div>
+        <span class="add badge badge-primary">Add +</span>
+      </a>
+    </div>
+  <% end %>
+<% else %>
+  No results found.
+<% end %>

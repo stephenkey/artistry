@@ -1,3 +1,19 @@
-<h1>
-  Albums
-</h1>
+<div class="row text-center">
+  <div class="col py-5">
+    <h1>
+      Welcome to Artistry
+    </h1>
+    <p>
+      Start adding albums to your collection.
+    </p>
+
+    <form action="/albums/search" method="get" data-remote="true">
+      <input name="q" type="text" class="form-control form-control-lg" id="search" placeholder="Find an album">
+    </form>
+
+  </div>
+</div>
+
+<div id="results" class="row mt-3"></div>
+
+<%= render '/shared/adding_album_notice' %>

@@ -10,16 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171026153929) do
+ActiveRecord::Schema.define(version: 20171026193202) do
 
   create_table "albums", force: :cascade do |t|
     t.integer "genre_id"
     t.integer "artist_id"
-    t.string "title"
-    t.string "state"
-    t.integer "year"
-    t.integer "seconds"
-    t.integer "tracks_count"
+    t.string "name"
+    t.string "published"
+    t.string "last_fm_url"
+    t.integer "tracks_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["artist_id"], name: "index_albums_on_artist_id"
@@ -28,21 +27,30 @@ ActiveRecord::Schema.define(version: 20171026153929) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
-    t.integer "albums_count"
+    t.integer "albums_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
-    t.integer "albums_count"
+    t.integer "albums_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.integer "album_id"
+    t.string "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_images_on_album_id"
   end
 
   create_table "libraries", force: :cascade do |t|
     t.integer "user_id"
     t.integer "album_id"
+    t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["album_id"], name: "index_libraries_on_album_id"
@@ -51,9 +59,10 @@ ActiveRecord::Schema.define(version: 20171026153929) do
 
   create_table "tracks", force: :cascade do |t|
     t.integer "album_id"
-    t.string "title"
-    t.integer "order"
-    t.integer "seconds"
+    t.string "name"
+    t.integer "order", default: 0
+    t.integer "seconds", default: 0
+    t.string "last_fm_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["album_id"], name: "index_tracks_on_album_id"

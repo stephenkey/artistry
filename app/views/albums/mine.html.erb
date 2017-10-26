@@ -1,0 +1,26 @@
+<div class="row text-center">
+  <div class="col py-5">
+    <h1>
+      My Albums
+    </h1>
+  </div>
+</div>
+
+<div id="results" class="row mt-3">
+  <% if @libraries %>
+    <% @libraries.each do |library| %>
+      <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
+        <a href="<%= album_path library %>" class="card album">
+          <img class="card-img-top" src="<%= library.album.images.last.url %>" alt="<%= library.album.name %>">
+          <div class="card-body">
+            <h4 class="card-title"><%= library.album.name %></h4>
+            <p class="card-text"><%= library.album.artist.name %></p>
+          </div>
+          <span class="add badge badge-primary">View</span>
+        </a>
+      </div>
+    <% end %>
+  <% else %>
+    No results found.
+  <% end %>
+</div>

@@ -1,5 +1,6 @@
 class User < ApplicationRecord
 
+  has_many :libraries
   has_many :albums, through: :libraries
 
   # Include default devise modules. Others available are:
