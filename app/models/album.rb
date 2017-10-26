@@ -2,11 +2,12 @@ class Album < ApplicationRecord
   include AASM
 
   belongs_to :artist, counter_cache: true
-  belongs_to :genre, counter_cache: true
+  belongs_to :genre,  counter_cache: true
 
   has_many :tracks
+  has_many :users, through: :libraries
 
-  validates :title, presence: true
+  validates :title,     presence: true
   validates :artist_id, presence: true
 
   aasm column: 'state', whiny_transitions: false do

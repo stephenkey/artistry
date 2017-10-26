@@ -33,6 +33,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'sidekiq'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+# Authentication
+gem 'devise'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
