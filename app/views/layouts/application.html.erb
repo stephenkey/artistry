@@ -19,6 +19,14 @@
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="<%= albums_path %>">Find Albums</a>
+          </li>
+          <% if user_signed_in? %>
+            <li class="nav-item">
+              <a class="nav-link" href="<%= mine_albums_path %>">My Albums</a>
+            </li>
+          <% end %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <%= user_signed_in? ? current_user.name : 'Get Started' %>

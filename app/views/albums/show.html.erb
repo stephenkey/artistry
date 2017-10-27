@@ -11,10 +11,9 @@
       <%= @library.album.name %>
     </h1>
     <p>
-      <%= @library.album.artist.name %> <br>
+      <%= link_to @library.album.artist.name, artist_path(@library.album.artist) %> <br>
       <%= @library.album.published %> <br>
       <span class="badge badge-secondary"><%= @library.state.humanize %></span>
-      <% @library.album.published.to_time.strftime("%Y") %>
     </p>
     <%= link_to 'Edit', edit_album_path(@library), class: 'btn btn-sm btn-outline-dark' %>
     <%= link_to 'View on last.fm', @library.album.last_fm_url, class: 'btn btn-sm btn-outline-dark', target: '_blank' %>

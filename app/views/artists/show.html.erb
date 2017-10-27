@@ -1,0 +1,13 @@
+<div class="row my-5">
+  <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
+    <div class="card album">
+      <img class="card-img-top" src="<%= @artist.albums.first.images.last.url %>" alt="<%= @artist.albums.first.name %>">
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-6 col-lg-9 mb-3">
+    <h1>
+      <%= @artist.name %>
+    </h1>
+    <%= link_to 'Download CSV', artists_path(format: 'csv') %>
+  </div>
+</div>

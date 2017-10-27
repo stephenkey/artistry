@@ -9,5 +9,7 @@ Rails.application.routes.draw do
     get '/mine', to: 'albums#mine', on: :collection
   end
 
+  resources :artists
+
   root to: "marketing#index"
 end

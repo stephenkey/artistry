@@ -10,13 +10,16 @@ class Album < ApplicationRecord
   validates :name,     presence: true
   validates :artist_id, presence: true
 
+  def year
+    published.present? ? published.to_time.strftime("%Y").to_i : nil
+  end
+
   def self.search(q)
     return [] unless q.present?
     begin
       response = RestClient.get 'http://ws.audioscrobbler.com/2.0/', {
         params: {
-          api_key: '20e3791ace8a446bcbaf074f41e03034',
-          # api_key: ENV['LAST_FM_API_KEY'],
+          api_key: ENV['LAST_FM_API_KEY'],
           format: 'json',
           method: 'album.search',
           album: URI.encode(q, /\W/)
@@ -36,8 +39,7 @@ class Album < ApplicationRecord
     begin
       response = RestClient.get 'http://ws.audioscrobbler.com/2.0/', {
         params: {
-          api_key: '20e3791ace8a446bcbaf074f41e03034',
-          # api_key: ENV['LAST_FM_API_KEY'],
+          api_key: ENV['LAST_FM_API_KEY'],
           format: 'json',
           method: 'album.getInfo',
           artist: artist_name,
