@@ -22,13 +22,6 @@ class Artist < ApplicationRecord
     max = counts.values.max
     counts.select { |k,v| v == max }.keys.to_sentence
   end
-
-  def export_values
-    values_array = [name]
-    values_array.push(self.albums.length)
-    values_array.push(self.albums_years)
-    values_array.push(self.common_words)
-  end
   
   def self.export_columns
     ['name', '# of Albums', 'Years', 'Common Words']
